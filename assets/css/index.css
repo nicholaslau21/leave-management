@@ -1,0 +1,57 @@
+html,
+body,
+.container {
+    color: white;
+    height: 100vh;
+    background: #000000;
+}
+
+.container {
+    display: flex;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+main {
+    background: #151515;
+    padding: 35px;
+}
+
+.content-nav__items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.content-nav__item {
+    margin: 0;
+}
+
+.content-nav__item a {
+    position: relative;
+    text-decoration: none;
+    color: #838383;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.content-nav__item a:hover,
+.content-nav__item a:active,
+.content-nav__item a.pending.active {
+    color: white;
+    border-bottom: 3px solid #6e56e0;
+}
+
+.content-nav__item a.pending img {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

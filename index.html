@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Leave Management</title>
+        <link rel="shortcut icon" href="assets/img/favicon.svg" />
+        <link rel="stylesheet" href="assets/css/index.css" />
+        <link rel="stylesheet" href="assets/css/header.css" />
+        <link rel="stylesheet" href="assets/css/main-menu.css" />
+        <link rel="stylesheet" href="assets/css/mobile-menu.css" />
+        <link rel="stylesheet" href="assets/css/dashboard.css" />
+        <link rel="stylesheet" href="assets/css/leave-request.css" />
+        <link rel="stylesheet" href="assets/css/modal.css" />
+        <link
+            href="https://cdn.datatables.net/2.1.5/css/dataTables.dataTables.min.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdn.datatables.net/select/2.0.5/css/select.dataTables.min.css"
+            rel="stylesheet"
+        />
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="assets/js/datatable.js"></script>
+        <script src="https://cdn.datatables.net/2.1.5/js/dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/select/2.0.5/js/dataTables.select.min.js"></script>
+        <script src="assets/js/modal.js"></script>
+        <script src="assets/js/main-menu.js"></script>
+    </head>
+    <body>
+        <div class="backdrop"></div>
+        <div class="modal">
+            <div class="modal-header">
+                <div>Confirmation</div>
+                <img src="assets/icons/close.svg" alt="Close the modal." />
+            </div>
+            <div class="modal-content">
+                Are you sure want to approve Simon Minter sick leave for 1 day?
+            </div>
+            <div class="modal__actions">
+                <button
+                    class="modal__action modal__action--negative"
+                    type="button"
+                >
+                    NO
+                </button>
+                <button
+                    class="modal__action modal__action--positive"
+                    type="button"
+                >
+                    YES
+                </button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="main-menu">
+                <div class="main-menu__header">
+                    <div class="main-menu__brand">
+                        <img src="assets/icons/brand1.svg" alt="Brand logo." />
+                        <span class="main-menu__brand-name">HRHR</span>
+                    </div>
+                    <img
+                        src="assets/icons/main-menu-toggle.svg"
+                        alt="Toggle the main menu."
+                    />
+                </div>
+                <nav class="main-nav">
+                    <ul class="main-nav__items">
+                        <li class="main-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/dashboard.svg"
+                                    alt="Menu option for dashboard."
+                                />Dashboard</a
+                            >
+                        </li>
+                        <li class="main-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/calendar.svg"
+                                    alt="Menu option for calendar."
+                                />Calendar</a
+                            >
+                        </li>
+                        <li class="main-nav__item">
+                            <a href="#" class="pending"
+                                ><img
+                                    src="assets/icons/recruitment.svg"
+                                    alt="Menu option for recruitment." />Recruitment
+                                <img
+                                    class="icon-pending"
+                                    src="assets/icons/pending10.svg"
+                            /></a>
+                        </li>
+                        <li class="main-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/employees.svg"
+                                    alt="Menu option for employees."
+                                />Employees</a
+                            >
+                        </li>
+                        <li class="main-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/leave.svg"
+                                    alt="Menu option for leave."
+                                />Leave</a
+                            >
+                        </li>
+                        <li class="main-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/organisation.svg"
+                                    alt="Menu option for organisation."
+                                />Organisation</a
+                            >
+                        </li>
+                        <li class="main-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/billings.svg"
+                                    alt="Menu option for billings."
+                                />Billings</a
+                            >
+                        </li>
+                        <li class="main-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/engagement.svg"
+                                    alt="Menu option for engagement."
+                                />Engagement</a
+                            >
+                        </li>
+                        <li class="main-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/development.svg"
+                                    alt="Menu option for development."
+                                />Development</a
+                            >
+                        </li>
+                        <li class="main-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/performance.svg"
+                                    alt="Menu option for performance."
+                                />Performance</a
+                            >
+                        </li>
+                        <li class="main-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/reports.svg"
+                                    alt="Menu option for reports."
+                                />Reports</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="main-content">
+                <header class="header">
+                    <button class="toggle-button">
+                        <span class="toggle-button__bar"></span>
+                        <span class="toggle-button__bar"></span>
+                        <span class="toggle-button__bar"></span>
+                    </button>
+                    <a class="header__brand">
+                        <img
+                            src="assets/icons/brand.svg"
+                            alt="Menumiz HR - Your favorite HR management sytem"
+                        />
+                        <span class="brand__name">Menumiz HR</span>
+                    </a>
+                    <nav class="header-nav">
+                        <ul class="header-nav__items">
+                            <li class="header-nav__item">
+                                <input
+                                    type="text"
+                                    id="search"
+                                    name="search"
+                                    placeholder="Enter any keyword..."
+                                />
+                            </li>
+                            <li class="header-nav__item">
+                                <img
+                                    src="assets/icons/filter.svg"
+                                    alt="Filter by additional criteria."
+                                />
+                            </li>
+                            <li class="header-nav__item">
+                                <img
+                                    src="assets/icons/bell.svg"
+                                    alt="View notifications."
+                                />
+                            </li>
+                            <li class="header-nav__item">
+                                <img
+                                    src="assets/icons/avatar.svg"
+                                    alt="Photo of your avatar."
+                                />
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+                <nav class="mobile-nav">
+                    <ul class="mobile-nav__items">
+                        <li class="mobile-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/dashboard.svg"
+                                    alt="Menu option for dashboard."
+                                />Dashboard</a
+                            >
+                        </li>
+                        <li class="mobile-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/calendar.svg"
+                                    alt="Menu option for calendar."
+                                />Calendar</a
+                            >
+                        </li>
+                        <li class="mobile-nav__item">
+                            <a href="#" class="pending"
+                                ><img
+                                    src="assets/icons/recruitment.svg"
+                                    alt="Menu option for recruitment." />Recruitment
+                                <img
+                                    class="icon-pending"
+                                    src="assets/icons/pending10.svg"
+                            /></a>
+                        </li>
+                        <li class="mobile-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/employees.svg"
+                                    alt="Menu option for employees."
+                                />Employees</a
+                            >
+                        </li>
+                        <li class="mobile-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/leave.svg"
+                                    alt="Menu option for leave."
+                                />Leave</a
+                            >
+                        </li>
+                        <li class="mobile-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/organisation.svg"
+                                    alt="Menu option for organisation."
+                                />Organisation</a
+                            >
+                        </li>
+                        <li class="mobile-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/billings.svg"
+                                    alt="Menu option for billings."
+                                />Billings</a
+                            >
+                        </li>
+                        <li class="mobile-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/engagement.svg"
+                                    alt="Menu option for engagement."
+                                />Engagement</a
+                            >
+                        </li>
+                        <li class="mobile-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/development.svg"
+                                    alt="Menu option for development."
+                                />Development</a
+                            >
+                        </li>
+                        <li class="mobile-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/performance.svg"
+                                    alt="Menu option for performance."
+                                />Performance</a
+                            >
+                        </li>
+                        <li class="mobile-nav__item">
+                            <a href="#"
+                                ><img
+                                    src="assets/icons/reports.svg"
+                                    alt="Menu option for reports."
+                                />Reports</a
+                            >
+                        </li>
+                    </ul>
+                </nav>
+                <main>
+                    <nav class="content-nav">
+                        <ul class="content-nav__items">
+                            <li class="content-nav__item">
+                                <a href="#" class="pending active"
+                                    >Leave Management
+                                    <img
+                                        src="assets/icons/yellow-dot.svg"
+                                        alt="There is task awaiting you in Leave Management for further action."
+                                /></a>
+                            </li>
+                            <li class="content-nav__item">
+                                <a href="#">Leave Request </a>
+                            </li>
+                            <li class="content-nav__item">
+                                <a href="#">Leave Types </a>
+                            </li>
+                            <li class="content-nav__item">
+                                <a href="#" class="pending"
+                                    >Leave Calendar
+                                    <img
+                                        src="assets/icons/yellow-dot.svg"
+                                        alt="There is task awaiting you in Leave Calendar for further action."
+                                /></a>
+                            </li>
+                            <li class="content-nav__item">
+                                <a href="">Leave Report </a>
+                            </li>
+                            <li class="content-nav__item">
+                                <a href="">Leave Approver </a>
+                            </li>
+                            <li class="content-nav__item">
+                                <a href="#">
+                                    <img
+                                        src="assets/icons/filter.svg"
+                                        alt="Filter by additional criteria."
+                                    />
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <section id="dashboard">
+                        <h1>Dashboard</h1>
+                        <div class="board__list">
+                            <article class="board">
+                                <div class="board__header">
+                                    <span>Heatmap</span>
+                                    <div class="date-filter">
+                                        <span class="date-filter__day"
+                                            >SICKDAY</span
+                                        >
+                                        <span class="date-filter__date"
+                                            >MARCH 2023</span
+                                        >
+                                    </div>
+                                </div>
+                                <div class="board__content">
+                                    <div class="filter-day">
+                                        <button class="day">Mon</button>
+                                        <button class="day">Tue</button>
+                                        <button class="day">Wed</button>
+                                        <button class="day">Thu</button>
+                                        <button class="day active">Fri</button>
+                                        <button class="day">Sat</button>
+                                        <button class="day">Sun</button>
+                                    </div>
+                                    <ul class="leave-type__list">
+                                        <li class="leave-type">
+                                            <p class="leave-type__description">
+                                                Sick Leave
+                                            </p>
+                                            <div class="leave-type__percentage">
+                                                <img
+                                                    src="assets/icons/progress50.svg"
+                                                    alt="There are 50 percent of employees who taken sick leave."
+                                                />
+                                            </div>
+                                        </li>
+                                        <li class="leave-type">
+                                            <p class="leave-type__description">
+                                                Annual Leave
+                                            </p>
+                                            <div class="leave-type__percentage">
+                                                <img
+                                                    src="assets/icons/progress30.svg"
+                                                    alt="There are 30 percent of employees who taken annual leave."
+                                                />
+                                            </div>
+                                        </li>
+                                        <li class="leave-type">
+                                            <p class="leave-type__description">
+                                                Emergency Leave
+                                            </p>
+                                            <div class="leave-type__percentage">
+                                                <img
+                                                    src="assets/icons/progress20.svg"
+                                                    alt="There are 20 percent of employees who taken emergency leave."
+                                                />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="board__footer">
+                                    Most popular day: Friday
+                                </div>
+                            </article>
+                            <article class="board">
+                                <div class="board__header">
+                                    <span>Most Days Away</span>
+                                    <div class="date-filter">
+                                        <span class="date-filter__date"
+                                            >MARCH 2023</span
+                                        >
+                                    </div>
+                                </div>
+                                <div class="board__content">
+                                    <ul class="employee__list">
+                                        <li class="employee">
+                                            <img
+                                                src="assets/icons/avatar2.svg"
+                                                alt="Avatar"
+                                            />
+                                            <div class="employee__name">
+                                                Mark Jacobs
+                                            </div>
+                                            <span>5.0 day(s)</span>
+                                        </li>
+                                        <li class="employee">
+                                            <img
+                                                src="assets/icons/avatar4.svg"
+                                                alt="Avatar"
+                                            />
+                                            <div class="employee__name">
+                                                Charlie Kristen
+                                            </div>
+                                            <span>3.5 day(s)</span>
+                                        </li>
+                                        <li class="employee">
+                                            <img
+                                                src="assets/icons/avatar5.svg"
+                                                alt="Avatar"
+                                            />
+                                            <div class="employee__name">
+                                                Nur Fariha binti Maslan
+                                            </div>
+                                            <span>1.0 day(s)</span>
+                                        </li>
+                                        <li class="employee">
+                                            <img
+                                                src="assets/icons/avatar3.svg"
+                                                alt="Avatar"
+                                            />
+                                            <div class="employee__name">
+                                                Nishant Talwar
+                                            </div>
+                                            <span>1.0 day(s)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="board__footer">
+                                    Total: 9.5 day(s)
+                                </div>
+                            </article>
+                            <img
+                                class="board-status__avatar"
+                                src="assets/icons/avatar2.svg"
+                                alt="Avatar"
+                            />
+                            <img
+                                class="board-status__pending"
+                                src="assets/icons/status-pending.svg"
+                                alt="Avatar"
+                            />
+                        </div>
+                    </section>
+                    <section id="leaveRequest">
+                        <div class="leave-request__view-type">
+                            <h1>Leave Requests</h1>
+                            <span>
+                                <button class="view-type__button active">
+                                    List View
+                                </button>
+                                <button class="view-type__button">
+                                    Month View
+                                </button>
+                            </span>
+                        </div>
+                        <div class="leave-request__container">
+                            <div class="leave-request__filters">
+                                <nav class="leave-status-nav">
+                                    <ul class="leave-status-nav__items">
+                                        <li class="leave-status-nav__item">
+                                            <a href="#" class="active">All</a>
+                                        </li>
+                                        <li class="leave-status-nav__item">
+                                            <a href="#">Approved</a>
+                                        </li>
+                                        <li class="leave-status-nav__item">
+                                            <a href="#">Rejected</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <div>
+                                    <span class="">March 2023</span>
+                                </div>
+                            </div>
+                            <table id="leaveRequestsTable" class="display">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>#</th>
+                                        <th>NAME</th>
+                                        <th>PERIOD</th>
+                                        <th>DAY(S)</th>
+                                        <th>LEAVE TYPE</th>
+                                        <th>ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="leave-request">
+                                        <td></td>
+                                        <td>
+                                            <img
+                                                src="assets/icons/status-pending.svg"
+                                                alt="Status is pending"
+                                            />
+                                        </td>
+                                        <td>
+                                            <div
+                                                class="leave-request__employee"
+                                            >
+                                                <img
+                                                    src="assets/icons/avatar2.svg"
+                                                    alt="Avatar"
+                                                />
+                                                <span
+                                                    class="leave-request__employee-name"
+                                                    >Mark Jacobs</span
+                                                >
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>31 Mar, 2023 09:00 AM</div>
+                                            <div>31 Mar, 2023 18:00 PM</div>
+                                        </td>
+                                        <td>1.0</td>
+                                        <td>Annual Leave</td>
+                                        <td>
+                                            <div class="leave-request__actions">
+                                                <div>
+                                                    <button
+                                                        class="leave-request__button leave-request__button--reject"
+                                                    >
+                                                        REJECT
+                                                    </button>
+                                                    <button
+                                                        class="leave-request__button leave-request__button--approve"
+                                                    >
+                                                        APPROVE
+                                                    </button>
+                                                </div>
+                                                <img
+                                                    src="assets/icons/chevron-right.svg"
+                                                    alt="Status is pending"
+                                                />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="leave-request">
+                                        <td></td>
+                                        <td>
+                                            <img
+                                                src="assets/icons/status-pending.svg"
+                                                alt="Status is pending"
+                                            />
+                                        </td>
+                                        <td class="leave-request__employee">
+                                            <img
+                                                src="assets/icons/avatar.svg"
+                                                alt="Avatar"
+                                            />
+                                            <span
+                                                class="leave-request__employee-name"
+                                                >Charlie Kristen</span
+                                            >
+                                        </td>
+                                        <td>
+                                            <div>10 Apr, 2023 09:00 AM</div>
+                                            <div>11 Apr, 2023 18:00 PM</div>
+                                        </td>
+                                        <td>2.0</td>
+                                        <td>Annual Leave</td>
+                                        <td>
+                                            <div class="leave-request__actions">
+                                                <div>
+                                                    <button
+                                                        class="leave-request__button leave-request__button--reject"
+                                                    >
+                                                        REJECT
+                                                    </button>
+                                                    <button
+                                                        class="leave-request__button leave-request__button--approve"
+                                                    >
+                                                        APPROVE
+                                                    </button>
+                                                </div>
+                                                <img
+                                                    src="assets/icons/chevron-right.svg"
+                                                    alt="Status is pending"
+                                                />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="leave-request">
+                                        <td></td>
+                                        <td>
+                                            <img
+                                                src="assets/icons/status-pending.svg"
+                                                alt="Status is pending"
+                                            />
+                                        </td>
+                                        <td class="leave-request__employee">
+                                            <img
+                                                src="assets/icons/avatar3.svg"
+                                                alt="Avatar"
+                                            />
+                                            <span
+                                                class="leave-request__employee-name"
+                                                >Nur Fariha binti Maslan</span
+                                            >
+                                        </td>
+                                        <td>
+                                            <div>21 Apr, 2023 09:00 AM</div>
+                                            <div>24 Apr, 2023 18:00 PM</div>
+                                        </td>
+                                        <td>2.0</td>
+                                        <td>Hospital Leave</td>
+                                        <td>
+                                            <div class="leave-request__actions">
+                                                <div>
+                                                    <button
+                                                        class="leave-request__button leave-request__button--reject"
+                                                    >
+                                                        REJECT
+                                                    </button>
+                                                    <button
+                                                        class="leave-request__button leave-request__button--approve"
+                                                    >
+                                                        APPROVE
+                                                    </button>
+                                                </div>
+                                                <img
+                                                    src="assets/icons/chevron-right.svg"
+                                                    alt="Status is pending"
+                                                />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="leave-request">
+                                        <td></td>
+                                        <td>
+                                            <img
+                                                src="assets/icons/status-approved.svg"
+                                                alt="Status is approved"
+                                            />
+                                        </td>
+                                        <td class="leave-request__employee">
+                                            <img
+                                                src="assets/icons/avatar4.svg"
+                                                alt="Avatar"
+                                            />
+                                            <span
+                                                class="leave-request__employee-name"
+                                                >Nishant Talwar</span
+                                            >
+                                        </td>
+                                        <td>
+                                            <div>27 Feb, 2023 14:00 PM</div>
+                                            <div>28 Feb, 2023 18:00 PM</div>
+                                        </td>
+                                        <td>1.5</td>
+                                        <td>Sick Leave</td>
+                                        <td>
+                                            <div class="leave-request__actions">
+                                                <div>
+                                                    <button
+                                                        class="leave-request__button leave-request__button--reject"
+                                                        style="
+                                                            visibility: hidden;
+                                                        "
+                                                    >
+                                                        REJECT
+                                                    </button>
+                                                    <button
+                                                        class="leave-request__button leave-request__button--approve"
+                                                    >
+                                                        APPROVED
+                                                    </button>
+                                                </div>
+                                                <img
+                                                    src="assets/icons/chevron-right.svg"
+                                                    alt="Status is pending"
+                                                />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="leave-request">
+                                        <td></td>
+                                        <td>
+                                            <img
+                                                src="assets/icons/status-approved.svg"
+                                                alt="Status is pending"
+                                            />
+                                        </td>
+                                        <td class="leave-request__employee">
+                                            <img
+                                                src="assets/icons/avatar5.svg"
+                                                alt="Avatar"
+                                            />
+                                            <span
+                                                class="leave-request__employee-name"
+                                                >Simon Minter</span
+                                            >
+                                        </td>
+                                        <td>
+                                            <div>22 Feb, 2023 09:00 AM</div>
+                                            <div>22 Feb, 2023 13:00 PM</div>
+                                        </td>
+                                        <td>0.5</td>
+                                        <td>Sick Leave</td>
+                                        <td>
+                                            <div class="leave-request__actions">
+                                                <div>
+                                                    <button
+                                                        class="leave-request__button leave-request__button--reject"
+                                                        style="
+                                                            visibility: hidden;
+                                                        "
+                                                    >
+                                                        REJECT
+                                                    </button>
+                                                    <button
+                                                        class="leave-request__button leave-request__button--approve"
+                                                    >
+                                                        APPROVED
+                                                    </button>
+                                                </div>
+                                                <img
+                                                    src="assets/icons/chevron-right.svg"
+                                                    alt="Status is pending"
+                                                />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="leave-request">
+                                        <td></td>
+                                        <td>
+                                            <img
+                                                src="assets/icons/status-approved.svg"
+                                                alt="Status is pending"
+                                            />
+                                        </td>
+                                        <td class="leave-request__employee">
+                                            <img
+                                                src="assets/icons/avatar.svg"
+                                                alt="Avatar"
+                                            />
+                                            <span
+                                                class="leave-request__employee-name"
+                                                >Magdalene</span
+                                            >
+                                        </td>
+                                        <td>
+                                            <div>31 Mar, 2023 09:00 AM</div>
+                                            <div>31 Mar, 2023 18:00 PM</div>
+                                        </td>
+                                        <td>1.0</td>
+                                        <td>Annual Leave</td>
+                                        <td>
+                                            <div class="leave-request__actions">
+                                                <div>
+                                                    <button
+                                                        class="leave-request__button leave-request__button--reject"
+                                                        style="
+                                                            visibility: hidden;
+                                                        "
+                                                    >
+                                                        REJECT
+                                                    </button>
+                                                    <button
+                                                        class="leave-request__button leave-request__button--approve"
+                                                    >
+                                                        APPROVED
+                                                    </button>
+                                                </div>
+                                                <a href="#">
+                                                    <img
+                                                        src="assets/icons/chevron-right.svg"
+                                                        alt="Status is pending"
+                                                    />
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+        <div class="leaves-selected__footer close">
+            <span id="leaves-selected__total">TOTAL: 2</span>
+            <div>
+                <button
+                    class="leave-request__button leave-request__button--reject"
+                >
+                    REJECT
+                </button>
+                <button
+                    id="leaveRequestApprove"
+                    class="leave-request__button leave-request__button--approve"
+                >
+                    APPROVE
+                </button>
+            </div>
+        </div>
+    </body>
+</html>

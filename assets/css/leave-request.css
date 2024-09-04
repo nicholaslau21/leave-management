@@ -1,0 +1,140 @@
+#leaveRequest {
+    margin-top: 40px;
+}
+
+.leave-request__view-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.view-type__button {
+    background: #272727;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+}
+
+.view-type__button:first-of-type {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.view-type__button:last-of-type {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.view-type__button.active,
+.view-type__button:hover {
+    background: #6e56e0;
+}
+
+.leave-request__container {
+    background: #1e1e1e;
+    border-radius: 10px;
+}
+
+.leave-request__filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.leave-status-nav__items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.leave-status-nav__item {
+    margin: 0 5px;
+}
+
+.leave-status-nav__item a {
+    text-decoration: none;
+    color: #838383;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.leave-status-nav__item a:hover,
+.leave-status-nav__item a:active,
+.leave-status-nav__item a.active {
+    color: white;
+    border-bottom: 3px solid #6e56e0;
+}
+
+.leave-request__employee {
+    display: flex;
+    align-items: center;
+}
+
+#leaveRequestsTable {
+    font-size: 13px;
+}
+
+.leave-request__employee-name {
+    margin: 0px 15px;
+}
+
+.leave-request__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 30px;
+}
+
+.leave-request__button {
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+.leave-request__button--reject {
+    background: #1e1e1e;
+    border: 1px solid white;
+}
+
+.leave-request__button--approve {
+    background: #6e56e0;
+    border: none;
+    margin-left: 3px;
+}
+
+.leave-request__actions img {
+    cursor: pointer;
+}
+
+.leaves-selected__footer.close {
+    position: fixed;
+    bottom: 0;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: #272727;
+    padding: 15px;
+}
+
+.leaves-selected__footer.open {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: #272727;
+    padding: 15px;
+}
+
+.leaves-selected__total {
+    font-weight: bold;
+}
